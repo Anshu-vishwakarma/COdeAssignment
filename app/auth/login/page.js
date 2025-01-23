@@ -9,26 +9,19 @@ export default function Login() {
   const { data: session, status } = useSession(); // Get session data
 
   useEffect(() => {
-    // If the user is logged in, check the role and redirect
-    if (status === 'authenticated') {
-      console.log('Session data:', session); // Log session data when authenticated
-
+    if (typeof window !== 'undefined' && status === 'authenticated') {
       if (session?.user?.role) {
         if (session.user.role === 'student') {
-          // Redirect to student dashboard
           router.push('/dashboard/student');
         } else if (session.user.role === 'admin') {
-          // Redirect to admin dashboard
           router.push('/dashboard/admin');
-        } else {
-          console.error('Unknown role:', session.user.role);
         }
       } else {
-        // Default redirect if role is not found
         router.push('/dashboard/student');
       }
     }
   }, [status, session, router]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,13 +52,13 @@ export default function Login() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full text-slate-700 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="email"
             placeholder="Email"
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
           <input
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full text-slate-700 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="password"
             placeholder="Password"
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -86,6 +79,18 @@ export default function Login() {
             Sign in with Google
           </button>
         </div>
+
+        <div className="mt-6 text-center"> 
+        <p className="text-gray-600">Create a new account??</p>
+
+        <button
+            onClick={() => router.push('/auth/signup')}
+            className="w-full py-3 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300 ease-in-out transform hover:scale-105"
+          >
+            Sign Up
+          </button>
+        </div>
+       
         
       </div>
     </div>

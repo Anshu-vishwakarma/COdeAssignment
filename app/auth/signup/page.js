@@ -34,7 +34,7 @@ export default function Signup() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Input */}
           <input
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+            className="w-full text-slate-700 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             type="text"
             placeholder="Full Name"
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -42,7 +42,7 @@ export default function Signup() {
           />
           {/* Email Input */}
           <input
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+            className="w-full text-slate-700 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             type="email"
             placeholder="Email"
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -50,7 +50,7 @@ export default function Signup() {
           />
           {/* Password Input */}
           <input
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+            className="w-full text-slate-700 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             type="password"
             placeholder="Password"
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
